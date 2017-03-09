@@ -1,0 +1,28 @@
+db.user.aggregate([
+    {
+      $lookup:
+        {
+          from: "account",
+          localField: "accountId",
+          foreignField: "accountId",
+          as: "account"
+        }
+    },
+        {
+         "$project":{"firstName":1,"lastName":1,"account.name":1}
+     }
+ ])
+
+
+Result
+
+{
+    "_id" : ObjectId("58be65816fa2338250b58162"),
+    "firstName" : "Mark",
+    "lastName" : "Miltenburg",
+    "account" : [
+        {
+            "name" : "Kavanagh Industries"
+        }
+    ]
+}

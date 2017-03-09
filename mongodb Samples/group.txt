@@ -1,0 +1,37 @@
+db.test.aggregate ([
+   {
+      "$group":
+      {
+         "_id":
+         {
+            "Section" : "$Section"
+         },
+         "TotalMarks":
+         {
+            "$sum": "$Marks"
+         }
+      }
+   }
+])
+
+
+
+Result:
+{
+    "_id" : {
+        "Section" : "D"
+    },
+    "TotalMarks" : 120.0
+}
+{
+    "_id" : {
+        "Section" : "C"
+    },
+    "TotalMarks" : 260.0
+}
+{
+    "_id" : {
+        "Section" : "B"
+    },
+    "TotalMarks" : 170.0
+}

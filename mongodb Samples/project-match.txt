@@ -1,0 +1,26 @@
+db.test.aggregate
+(
+ [
+  {
+     "$match":
+     {
+        "Section":"A"
+     }
+  },
+  {
+       "$project":
+     {
+         StudentName : 1,Section:1,Marks:1
+     }
+  }
+ ]
+)
+
+
+Result:
+{
+    "_id" : ObjectId("58be896c9c95b53802d238f6"),
+    "StudentName" : "Vijay",
+    "Section" : "A",
+    "Marks" : 70.0
+}

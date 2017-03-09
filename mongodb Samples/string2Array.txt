@@ -1,0 +1,12 @@
+db.SDMSAccount.find({"sector":{$type:2}}).snapshot().forEach(function(x){x.sector=[x.sector];
+    db.SDMSAccount.save(x);});
+
+    Result:
+    {
+        "_id" : ObjectId("58ad3cc86fa2338250b4fd87"),
+        "sector" : [
+            [
+                "coma,semi"
+            ]
+        ]
+    }

@@ -1,0 +1,51 @@
+db.test.aggregate ([
+   {
+      "$group":
+      {
+         "_id":
+         {
+            "Section" : "$Section"
+         },
+         "TotalMarks":
+         {
+            "$sum": "$Marks"
+         },
+         "Count":{ "$sum" : 1},
+         "Average" : {"$avg" : "$Marks"}
+      }
+   },
+   {
+       "$project" :
+       {
+           "SectionName" : "$_id.Section",
+           "Total" : "$TotalMarks"
+       }
+   },
+   {
+       "$sort":{"SectionName":-1}
+   }
+])
+
+
+Result:
+{
+    "_id" : {
+        "Section" : "D"
+    },
+    "SectionName" : "D",
+    "Total" : 120.0
+}
+{
+    "_id" : {
+        "Section" : "C"
+    },
+    "SectionName" : "C",
+    "Total" : 260.0
+}
+{
+    "_id" : {
+        "Section" : "B"
+    },
+    "SectionName" : "B",
+    "Total" : 170.0
+}
